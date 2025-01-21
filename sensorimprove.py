@@ -28,19 +28,19 @@ def load_data(boxmod_path, juul_path):
     return boxmod_X, boxmod_y, juul_X, juul_y
 
 def evaluate_model(true_values, predictions):
-    """
+    '''
         return: R^2 RMSE
-    """
+    '''
     r2 = r2_score(true_values, predictions)
     rmse = sqrt(mean_squared_error(true_values, predictions))
     return r2, rmse
 
 def do_kfold_cv(X, y, model, X_scaler, y_scaler, n_splits=5):
-    """
+    '''
         KFold n_splits cross validation
         X_scaler, y_scaler: standardscaler and inverse_transform
         return: (mean_r2, mean_rmse, std_r2, std_rmse)
-    """
+    '''
     kf = KFold(n_splits=n_splits, shuffle=True, random_state=1)
     cv_r2 = []
     cv_rmse = []
